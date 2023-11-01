@@ -1,0 +1,15 @@
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\bin\Debug\Bystroschot.exe.config
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\bin\Debug\Bystroschot.exe
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\bin\Debug\Bystroschot.pdb
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.csproj.AssemblyReference.cache
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\MainWindow.g.cs
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\App.g.cs
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot_MarkupCompile.cache
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot_MarkupCompile.lref
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\MainWindow.baml
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.g.resources
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.Properties.Resources.resources
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.csproj.GenerateResource.cache
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.csproj.CoreCompileInputs.cache
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.exe
+C:\Users\Есения\source\repos\Bystroschot\Bystroschot\obj\Debug\Bystroschot.pdb
