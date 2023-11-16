@@ -34,10 +34,9 @@ namespace Bystroschot
                 Content = "Быстросчёт",
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
                 Height = 80,
-                Width = 800,
                 FontSize = 48
                 //Background = new SolidColorBrush(Color.FromRgb(159, 159, 250))
             };
@@ -51,6 +50,9 @@ namespace Bystroschot
             grid.RowDefinitions.Add(new RowDefinition());
             grid.RowDefinitions.Add(new RowDefinition());
             grid.RowDefinitions.Add(new RowDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
             grid.RowDefinitions[0].Height = new GridLength(15, GridUnitType.Star);
             grid.RowDefinitions[1].Height = new GridLength(10, GridUnitType.Star);
             grid.RowDefinitions[2].Height = new GridLength(15, GridUnitType.Star);
@@ -68,9 +70,9 @@ namespace Bystroschot
 
             Button TestButton = new Button()
             {
-                Width = 200,
+                MinWidth = 200,
                 Height = 80,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
                 Content = "Начать тест",
                 FontSize = 24,
@@ -80,9 +82,9 @@ namespace Bystroschot
             TestButton.Click += TestButton_Click;
             Button HistoryButton = new Button()
             {
-                Width = 200,
+                MinWidth = 200,
                 Height = 80,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
                 Content = "История",
                 FontSize = 24,
@@ -92,9 +94,9 @@ namespace Bystroschot
             HistoryButton.Click += HistoryButton_Click;
             Button AddingButton = new Button()
             {
-                Width = 200,
+                MinWidth = 200,
                 Height = 80,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
                 Content = "Настройки",
                 FontSize = 24,
@@ -104,16 +106,17 @@ namespace Bystroschot
 
             grid.Children.Add(TestButton);
             Grid.SetRow(TestButton, 0);
-
+            Grid.SetColumn(TestButton, 1);
             //Canvas.SetLeft(TestButton, 300);
             //Canvas.SetTop(TestButton, 50);
 
             grid.Children.Add(HistoryButton);
             Grid.SetRow(HistoryButton, 1);
+            Grid.SetColumn(HistoryButton, 1);
 
             grid.Children.Add(AddingButton);
             Grid.SetRow(AddingButton, 2);
-
+            Grid.SetColumn(AddingButton, 1);
         }
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
@@ -132,7 +135,7 @@ namespace Bystroschot
             grid.ColumnDefinitions.Add(new ColumnDefinition() {MinWidth=260});
             MainGridWindow.Children.Add(grid);
             Grid.SetRow(grid, 1);
-            ListBox ListOfSessions = new ListBox() { Width = 400, Height = 250 };
+            ListBox ListOfSessions = new ListBox() { Height = 250, HorizontalAlignment=HorizontalAlignment.Stretch};
             
             //Canvas.SetLeft(ListOfSessions, 50);
             //Canvas.SetTop(ListOfSessions, 50);
