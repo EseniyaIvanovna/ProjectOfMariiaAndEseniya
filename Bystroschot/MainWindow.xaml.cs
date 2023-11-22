@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SupportLib;
 
 namespace Bystroschot
 {
@@ -26,9 +27,9 @@ namespace Bystroschot
             InitializeComponent();
             StartWorking();
         }
-        public void StartWorking()
+        public void StartWorking() //это окно запускатся при старте приложения и при переходе к стартовому меню
         {
-            MainGridWindow.Children.Clear();
+            MainGridWindow.Children.Clear(); //главное окно состоит из 2 половин. Тут обе очищаются
             Label lable = new Label()
             {
                 Content = "Быстросчёт",
@@ -38,14 +39,24 @@ namespace Bystroschot
                 VerticalAlignment = VerticalAlignment.Center,
                 Height = 80,
                 FontSize = 48
-                //Background = new SolidColorBrush(Color.FromRgb(159, 159, 250))
+            }; //
+            Button CloseButton = new Button()
+            {
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Top,
+                MinWidth = 30,
+                MinHeight = 30,
+                Content = "close"
             };
+            CloseButton.Click += CloseButton_Click;
 
-
-            MainGridWindow.Children.Add(lable);
+            MainGridWindow.Children.Add(lable); //добавляем надпись Быстросчёт (0 ребёнок)
             Grid.SetRow(lable, 0);
 
-            Grid grid = new Grid() { };
+            MainGridWindow.Children.Add(CloseButton); //добавляем кнопку выхода (1 ребёнок)
+            Grid.SetRow(CloseButton, 0);
+
+            Grid grid = new Grid() { ShowGridLines= true}; //нижняя половина из 3 рядов и 3 столбцов (2 ребёнок)
             //grid.ShowGridLines = true;
             grid.RowDefinitions.Add(new RowDefinition());
             grid.RowDefinitions.Add(new RowDefinition());
@@ -57,16 +68,7 @@ namespace Bystroschot
             grid.RowDefinitions[1].Height = new GridLength(10, GridUnitType.Star);
             grid.RowDefinitions[2].Height = new GridLength(15, GridUnitType.Star);
             MainGridWindow.Children.Add(grid);
-            //Canvas InterectiveCanvas = new Canvas() {Width=800, Height=420};
-            //MainGridWindow.Children.Add(InterectiveCanvas);
             Grid.SetRow(grid, 1);
-
-            ////как сделать кнопку скруглённой???
-            //Style buttonStyle = new Style(typeof(Button));
-            //Setter cornerRadiusSetter = new Setter(Border.CornerRadiusProperty, new CornerRadius(50));
-            //buttonStyle.Setters.Add(cornerRadiusSetter);
-
-
 
             Button TestButton = new Button()
             {
@@ -78,7 +80,7 @@ namespace Bystroschot
                 FontSize = 24,
                 Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
                 Style = (Style)Application.Current.Resources["RoundButton"]
-        };
+        }; //три кнопки основного меню
             TestButton.Click += TestButton_Click;
             Button HistoryButton = new Button()
             {
@@ -117,6 +119,17 @@ namespace Bystroschot
             grid.Children.Add(AddingButton);
             Grid.SetRow(AddingButton, 2);
             Grid.SetColumn(AddingButton, 1);
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e) 
+        {
+            //MessageBox.Show("Ok");
+            MessageBoxResult result = MessageBox.Show("Вы хотите выйти из приложения?", "Подтверждение выхода", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                // Закрытие приложения
+                System.Windows.Application.Current.Shutdown();
+            }
         }
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
@@ -164,66 +177,82 @@ namespace Bystroschot
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
-            MainGridWindow.Children.RemoveAt(1);
-            Canvas InterectiveCanvas = new Canvas() { Width = 800, Height = 420 };
-            MainGridWindow.Children.Add(InterectiveCanvas);
-            Grid.SetRow(InterectiveCanvas, 1);
+            MainGridWindow.Children.RemoveAt(2); // удаляем грид который был нижней половиной
 
-            Label EnrerData = new Label()
+            User user = new User(); //создаю экземпляр класса в котором будет храниться информация о текущем прохождении теста
+
+            Grid grid = new Grid() { ShowGridLines = true }; //нижняя часть экрана(рабочая) 3 строки 3 колонки
+            grid.RowDefinitions.Add(new RowDefinition() );
+            grid.RowDefinitions.Add(new RowDefinition());
+            grid.RowDefinitions.Add(new RowDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            MainGridWindow.Children.Add(grid);
+            Grid.SetRow(grid, 1);
+
+            //Canvas InterectiveCanvas = new Canvas() { Width = 800, Height = 420 };
+            //MainGridWindow.Children.Add(InterectiveCanvas);
+            //Grid.SetRow(InterectiveCanvas, 1);
+
+            Label EnterData = new Label()
             {
                 Content = "Класс",
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
+                //HorizontalAlignment = HorizontalAlignment.Center,
+                //VerticalAlignment = VerticalAlignment.Center,
                 Height = 50,
                 Width = 150,
                 FontSize = 24,
-                Background = new SolidColorBrush(Color.FromRgb(159, 159, 250))
+                Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
             };
-            TextBox data = new TextBox()
-            {
-                Height = 50,
-                Width = 200,
-                FontSize = 24
-            };
-            data.KeyDown += TextBoxKeyDown;
-            Label TopicChoice = new Label()
-            {
-                Content = "Выберите тему",
-                HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Height = 50,
-                Width = 200,
-                FontSize = 24,
-                Background = new SolidColorBrush(Color.FromRgb(159, 159, 250))
-            };
-            ComboBox TopicBox = new ComboBox()
-            {
-                Height = 50,
-                Width = 200,
-                FontSize = 24
-            };
-            TopicBox.Items.Add("Тема1");
-            TopicBox.SelectedItem = TopicBox.Items[0];
-            TopicBox.Items.Add("Тема2");
-            TopicBox.Items.Add("Тема3");
-            TopicBox.SelectionChanged += TopicChanged;
+            grid.Children.Add(EnterData);
+            Grid.SetRow(grid, 0);
+            Grid.SetColumn(grid, 0);
+            //TextBox data = new TextBox()
+            //{
+            //    Height = 50,
+            //    Width = 200,
+            //    FontSize = 24
+            //};
+            //data.KeyDown += TextBoxKeyDown;
+            //Label TopicChoice = new Label()
+            //{
+            //    Content = "Выберите тему",
+            //    HorizontalContentAlignment = HorizontalAlignment.Center,
+            //    VerticalContentAlignment = VerticalAlignment.Center,
+            //    HorizontalAlignment = HorizontalAlignment.Center,
+            //    VerticalAlignment = VerticalAlignment.Center,
+            //    Height = 50,
+            //    Width = 200,
+            //    FontSize = 24,
+            //    Background = new SolidColorBrush(Color.FromRgb(159, 159, 250))
+            //};
+            //ComboBox TopicBox = new ComboBox()
+            //{
+            //    Height = 50,
+            //    Width = 200,
+            //    FontSize = 24
+            //};
+            //TopicBox.Items.Add("Тема1");
+            //TopicBox.SelectedItem = TopicBox.Items[0];
+            //TopicBox.Items.Add("Тема2");
+            //TopicBox.Items.Add("Тема3");
+            //TopicBox.SelectionChanged += TopicChanged;
 
-            InterectiveCanvas.Children.Add(EnrerData);
-            Canvas.SetLeft(EnrerData, 30);
-            Canvas.SetTop(EnrerData, 50);
-            InterectiveCanvas.Children.Add(data);
-            Canvas.SetLeft(data, 260);
-            Canvas.SetTop(data, 50);
-            InterectiveCanvas.Children.Add(TopicChoice);
-            Canvas.SetLeft(TopicChoice, 30);
-            Canvas.SetTop(TopicChoice, 150);
-            InterectiveCanvas.Children.Add(TopicBox);
-            Canvas.SetLeft(TopicBox, 260);
-            Canvas.SetTop(TopicBox, 150);
+            //InterectiveCanvas.Children.Add(EnrerData);
+            //Canvas.SetLeft(EnrerData, 30);
+            //Canvas.SetTop(EnrerData, 50);
+            //InterectiveCanvas.Children.Add(data);
+            //Canvas.SetLeft(data, 260);
+            //Canvas.SetTop(data, 50);
+            //InterectiveCanvas.Children.Add(TopicChoice);
+            //Canvas.SetLeft(TopicChoice, 30);
+            //Canvas.SetTop(TopicChoice, 150);
+            //InterectiveCanvas.Children.Add(TopicBox);
+            //Canvas.SetLeft(TopicBox, 260);
+            //Canvas.SetTop(TopicBox, 150);
 
 
         }
