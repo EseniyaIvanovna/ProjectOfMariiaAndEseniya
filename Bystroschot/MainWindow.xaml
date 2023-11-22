@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Быстросчёт" MinHeight="500" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None" >
     <Border BorderBrush="#FFC0C0FF" BorderThickness="20">
-        <Grid x:Name="MainGridWindow" Background="#FFF3F3FF" Margin="0,0,0,-6" ShowGridLines="True" >
+        <Grid x:Name="z" Background="#FFF3F3FF" Margin="0,0,0,-6" ShowGridLines="True" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="80*" />
                 <RowDefinition Height="420*"/>
