@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 D:\Project\Bystroschot\obj\Debug\
+=======
+C:\проекты\PrjctByUs\Bystroschot\obj\Debug\
+>>>>>>> 72112119c4b58fb22e2f9ef2115060aa600f6fc5
 Bystroschot
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 D:\Project\Bystroschot\App.xaml
 1219584333
 
 6-502434485
 13-1310406943
+=======
+C:\проекты\PrjctByUs\Bystroschot\App.xaml
+11151548125
+
+5-2017746502
+13-1505183044
+>>>>>>> 72112119c4b58fb22e2f9ef2115060aa600f6fc5
 MainWindow.xaml;
 
 True
