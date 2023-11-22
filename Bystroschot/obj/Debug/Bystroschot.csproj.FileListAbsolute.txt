@@ -31,4 +31,3 @@ C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.pdb
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\App.baml
 C:\проекты\PrjctByUs\Bystroschot\bin\Debug\SupportLib.dll
 C:\проекты\PrjctByUs\Bystroschot\bin\Debug\SupportLib.pdb
-C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.csproj.CopyComplete
