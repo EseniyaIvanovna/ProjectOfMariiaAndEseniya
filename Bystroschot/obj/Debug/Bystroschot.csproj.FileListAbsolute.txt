@@ -29,6 +29,7 @@ C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.csproj.CoreCompile
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.exe
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.pdb
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\App.baml
+<<<<<<< HEAD
 D:\Project\Bystroschot\bin\Debug\Bystroschot.exe.config
 D:\Project\Bystroschot\bin\Debug\Bystroschot.exe
 D:\Project\Bystroschot\bin\Debug\Bystroschot.pdb
@@ -46,3 +47,7 @@ D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.GenerateResource.cache
 D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.CoreCompileInputs.cache
 D:\Project\Bystroschot\obj\Debug\Bystroschot.exe
 D:\Project\Bystroschot\obj\Debug\Bystroschot.pdb
+=======
+C:\проекты\PrjctByUs\Bystroschot\bin\Debug\SupportLib.dll
+C:\проекты\PrjctByUs\Bystroschot\bin\Debug\SupportLib.pdb
+>>>>>>> 4e829fae0a91f6cc01123c30488d8b0a47631bf1

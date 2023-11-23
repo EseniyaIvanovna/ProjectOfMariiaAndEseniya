@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bystroschot"
         mc:Ignorable="d"
-        Title="Быстросчёт" MinHeight="500" MinWidth="800" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+        Title="Быстросчёт" MinHeight="800" MinWidth="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" >
     <Border BorderBrush="#FFC0C0FF" BorderThickness="20">
-    <Grid x:Name="MainGridWindow" Background="#FFF3F3FF" Margin="0,0,0,-6"  >
-        <Grid.RowDefinitions>
-            <RowDefinition x:Name="RowOne" Height="80*" />
-            <RowDefinition x:Name="RowTwo" Height="420*"/>
-        </Grid.RowDefinitions>
-        
-    </Grid>
-        </Border>
+        <Grid x:Name="MainGridWindow" Background="#FFF3F3FF" Margin="0,0,0,-6" ShowGridLines="True" >
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="FirstRow" Height="80*" />
+                <RowDefinition x:Name="SecondRow" Height="420*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="CloseBtn" Content="X" Click ="CloseButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="672,0,-0.4,0" VerticalAlignment="Top" VerticalContentAlignment="Center" MaxHeight="50" MinHeight="50" MaxWidth="50" MinWidth="50" FontSize="40"/>
+            <Label x:Name="MainLabel" Content="Быстросчёт" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="80" Width="600" Margin="62,0,55.6,0.2" FontSize="48"/>
+
+        </Grid>
+    </Border>
 </Window>
     

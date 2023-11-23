@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bystroschot", "Bystroschot\Bystroschot.csproj", "{5F96451C-A2C0-46EB-AFEB-4CEC6DAFA436}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportLib", "SupportLib\SupportLib.csproj", "{14308FDB-CF20-4BF6-ACAC-D3321BFD3B99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5F96451C-A2C0-46EB-AFEB-4CEC6DAFA436}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F96451C-A2C0-46EB-AFEB-4CEC6DAFA436}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F96451C-A2C0-46EB-AFEB-4CEC6DAFA436}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14308FDB-CF20-4BF6-ACAC-D3321BFD3B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14308FDB-CF20-4BF6-ACAC-D3321BFD3B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14308FDB-CF20-4BF6-ACAC-D3321BFD3B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14308FDB-CF20-4BF6-ACAC-D3321BFD3B99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
