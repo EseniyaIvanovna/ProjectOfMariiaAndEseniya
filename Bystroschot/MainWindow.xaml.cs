@@ -250,9 +250,31 @@ namespace Bystroschot
                 Canvas.SetLeft(Home, 510);
                 Canvas.SetTop(Home, 320);
                 Home.Click += GoHome;
+
+                ScrollViewer firstVariant = new ScrollViewer() { Height = 559, SnapsToDevicePixels = true, VerticalScrollBarVisibility = ScrollBarVisibility.Visible, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto };
+                Canvas.SetLeft(firstVariant, 10);
+                Canvas.SetTop(firstVariant, 182);
+
+                ScrollViewer secondVariant = new ScrollViewer();
+                Canvas.SetLeft(secondVariant, 432);
+                Canvas.SetTop(secondVariant, 182);
+                InterectiveCanvas.Children.Add(firstVariant);
+                InterectiveCanvas.Children.Add(secondVariant);
+
+                
+                //<ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Canvas.Top="182" Canvas.Left="10">
+                // < controls:FormulaControl x:Name = "formulaControl" Scale = "40" SelectionBrush = "LightBlue"
+                //  HorizontalAlignment = "Stretch" VerticalAlignment = "Stretch" SnapsToDevicePixels = "True" Height = "559" />
+
+                // </ ScrollViewer >
+
+
             }
         }
+        private void CreateControls()
+        {
 
+        }
         private void GoHome(object sender, RoutedEventArgs e)
         {
             StartWorking();
