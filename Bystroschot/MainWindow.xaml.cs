@@ -5,6 +5,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfMath;
+using Analytics;
+using Exversion;
+using Aspose.TeX;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -13,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Bystroschot
 {
@@ -25,6 +30,7 @@ namespace Bystroschot
         {
             InitializeComponent();
             StartWorking();
+            
         }
         public void StartWorking()
         {
@@ -251,29 +257,39 @@ namespace Bystroschot
                 Canvas.SetTop(Home, 320);
                 Home.Click += GoHome;
 
-                ScrollViewer firstVariant = new ScrollViewer() { Height = 559, SnapsToDevicePixels = true, VerticalScrollBarVisibility = ScrollBarVisibility.Visible, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto };
-                Canvas.SetLeft(firstVariant, 10);
-                Canvas.SetTop(firstVariant, 182);
 
-                ScrollViewer secondVariant = new ScrollViewer();
-                Canvas.SetLeft(secondVariant, 432);
-                Canvas.SetTop(secondVariant, 182);
-                InterectiveCanvas.Children.Add(firstVariant);
-                InterectiveCanvas.Children.Add(secondVariant);
+                //ScrollViewer firstVariant = new ScrollViewer() { Height = 559, SnapsToDevicePixels = true, VerticalScrollBarVisibility = ScrollBarVisibility.Hidden, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto };
+                //Canvas.SetLeft(firstVariant, 10);
+                //Canvas.SetTop(firstVariant, 182);
 
-                
-                //<ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Canvas.Top="182" Canvas.Left="10">
-                // < controls:FormulaControl x:Name = "formulaControl" Scale = "40" SelectionBrush = "LightBlue"
-                //  HorizontalAlignment = "Stretch" VerticalAlignment = "Stretch" SnapsToDevicePixels = "True" Height = "559" />
+                //ScrollViewer secondVariant = new ScrollViewer();
+                //Canvas.SetLeft(secondVariant, 432);
+                //Canvas.SetTop(secondVariant, 182);
+                //InterectiveCanvas.Children.Add(firstVariant);
+                //InterectiveCanvas.Children.Add(secondVariant);
 
-                // </ ScrollViewer >
+                //Обновленный вариант вывода картинок на экран
+                Button ShowFormula = new Button()
+                {
+                    Width = 250,
+                    Height = 50,
+                    Content = "Показать формулу",
+                    FontSize = 24,
+                    Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
+                    Style = (Style)Application.Current.Resources["RoundButton"]
+                };
+                InterectiveCanvas.Children.Add(ShowFormula);
+                Canvas.SetLeft(ShowFormula, 100);
+                Canvas.SetTop(ShowFormula, 100);
+                ShowFormula.Click += ShowContent;
+
 
 
             }
         }
-        private void CreateControls()
+        private void ShowContent(object sender, RoutedEventArgs e)
         {
-
+            
         }
         private void GoHome(object sender, RoutedEventArgs e)
         {
@@ -331,5 +347,31 @@ namespace Bystroschot
             }
         }
 
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
+    static class Equation
+    {
+        public static string CreateEquationFirstVariant(string Latex)
+        {
+            const string fileName = @"Equation1Var.PNG";
+            var parser = new TexFormulaParser();
+            var formula = parser.Parse(Latex);
+            var pngByte = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+            File.WriteAllBytes(fileName, pngByte);
+            return fileName;
+        }
+        public static string CreateEquationSecondVariant(string Latex)
+        {
+            const string fileName = @"EquationSecondVar.PNG";
+            var parser = new TexFormulaParser();
+            var formula = parser.Parse(Latex);
+            var pngByte = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+            File.WriteAllBytes(fileName, pngByte);
+            return fileName;
+        }
+    }
+
 }
