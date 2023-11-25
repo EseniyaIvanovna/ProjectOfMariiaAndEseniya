@@ -8,6 +8,7 @@ using System.Windows;
 using WpfMath;
 using Analytics;
 using Exversion;
+using Exversion.Analytics;
 using Aspose.TeX;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,6 +27,7 @@ namespace Bystroschot
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BaseConverter converter;
         public MainWindow()
         {
             InitializeComponent();
@@ -171,7 +173,7 @@ namespace Bystroschot
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             MainGridWindow.Children.RemoveAt(1);
-            Canvas InterectiveCanvas = new Canvas() { Width = 800, Height = 420 };
+            Canvas InterectiveCanvas = new Canvas() { Width = 800, Height = 420};
             MainGridWindow.Children.Add(InterectiveCanvas);
             Grid.SetRow(InterectiveCanvas, 1);
 
@@ -256,8 +258,6 @@ namespace Bystroschot
                 Canvas.SetLeft(Home, 510);
                 Canvas.SetTop(Home, 320);
                 Home.Click += GoHome;
-
-
                 //ScrollViewer firstVariant = new ScrollViewer() { Height = 559, SnapsToDevicePixels = true, VerticalScrollBarVisibility = ScrollBarVisibility.Hidden, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto };
                 //Canvas.SetLeft(firstVariant, 10);
                 //Canvas.SetTop(firstVariant, 182);
@@ -279,17 +279,78 @@ namespace Bystroschot
                     Style = (Style)Application.Current.Resources["RoundButton"]
                 };
                 InterectiveCanvas.Children.Add(ShowFormula);
-                Canvas.SetLeft(ShowFormula, 100);
-                Canvas.SetTop(ShowFormula, 100);
+                Canvas.SetLeft(ShowFormula, 810);
+                Canvas.SetTop(ShowFormula, 320);
                 ShowFormula.Click += ShowContent;
-
-
-
             }
         }
-        private void ShowContent(object sender, RoutedEventArgs e)
+        int idx = 0;
+        private void ShowContent(object sender, RoutedEventArgs e) //метод для вывода на экран
         {
+            Grid grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition());
+            grid.RowDefinitions.Add(new RowDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            MainGridWindow.Children.Add(grid);
+            Grid.SetRow(grid, 1);
+
             
+            string[] test1var = File.ReadAllLines("1Вариант.txt"); // тут должно быть поле объекта типа User _test
+            string[] test2var = File.ReadAllLines("2Вариант.txt");
+            string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
+
+            if (idx < test1var.Length) //предусматривается, что все файлы тестов для разных вариантов будут одной длины
+            {
+               //1variant
+                formula_in_math_format_1var = test1var[idx];
+                var converter1 = new AnalyticsTeXConverter();
+                formula_in_Tex_format_1var = converter1.Convert(formula_in_math_format_1var);//преобразование в Latex
+                string path = Equation.CreateEquationFirstVariant(formula_in_Tex_format_1var);
+                FileInfo f = new FileInfo(path);
+                string AbsoluteUri = f.FullName;
+                BitmapImage bitmapImage = new BitmapImage();
+                using (FileStream stream = new FileStream(AbsoluteUri, FileMode.Open, FileAccess.Read))
+                {
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad; 
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                }
+
+                grid.Children.Clear(); //да почему это не работает????!!!! откуда наслоение, если я очистила грид перед выводом
+                Image imageFirstVar = new Image() { Width = 200, Height = 200 };
+                imageFirstVar.Source = bitmapImage;
+                Grid.SetColumn(imageFirstVar, 0);
+                Grid.SetRow(imageFirstVar, 0);
+                grid.Children.Add(imageFirstVar);
+
+                //2variant
+                formula_in_math_format_2var = test2var[idx];
+                var converter2 = new AnalyticsTeXConverter();
+                formula_in_Tex_format_2var = converter2.Convert(formula_in_math_format_2var);//преобразование в Latex
+                string path2 = Equation.CreateEquationSecondVariant(formula_in_Tex_format_2var);
+                FileInfo f2 = new FileInfo(path2);
+                string AbsoluteUri2 = f2.FullName;
+                BitmapImage bitmapImage2 = new BitmapImage();
+                using (FileStream stream = new FileStream(AbsoluteUri2, FileMode.Open, FileAccess.Read))
+                {
+                    bitmapImage2.BeginInit();
+                    bitmapImage2.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage2.StreamSource = stream;
+                    bitmapImage2.EndInit();
+                }
+                //grid.Children.Clear(); //не понимаю, почему, но если строчку разкомитить, то выводится будет только второй вариант
+                Image imageSecondVar = new Image() { Width = 200, Height = 200 };
+                imageSecondVar.Source = bitmapImage2;
+                Grid.SetColumn(imageSecondVar, 1);
+                Grid.SetRow(imageSecondVar, 0);
+                grid.Children.Add(imageSecondVar);
+
+                idx++;
+                
+            }
+
         }
         private void GoHome(object sender, RoutedEventArgs e)
         {
@@ -359,13 +420,13 @@ namespace Bystroschot
             const string fileName = @"Equation1Var.PNG";
             var parser = new TexFormulaParser();
             var formula = parser.Parse(Latex);
-            var pngByte = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+            var pngByte = formula.RenderToPng(30.0, 0.0, 0.0, "Arial");
             File.WriteAllBytes(fileName, pngByte);
             return fileName;
         }
         public static string CreateEquationSecondVariant(string Latex)
         {
-            const string fileName = @"EquationSecondVar.PNG";
+            const string fileName = @"Equation2Var.PNG";
             var parser = new TexFormulaParser();
             var formula = parser.Parse(Latex);
             var pngByte = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
