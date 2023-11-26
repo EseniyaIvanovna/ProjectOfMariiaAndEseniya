@@ -23,14 +23,15 @@ using SupportLib;
 
 namespace Bystroschot
 {
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static User user = new User();
         private BaseConverter converter;
-        User user = new User();
-
+        List<User> users = new List<User>();//хранение истории
         public MainWindow()
         {
             InitializeComponent();
@@ -105,45 +106,71 @@ namespace Bystroschot
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
         {
-            Label label = (Label)MainGridWindow.Children[0];
-            label.Content = "История";
-            MainGridWindow.Children.RemoveAt(1);
-            //Canvas InterectiveCanvas = new Canvas() { Width = 800, Height = 420 };
-            //MainGridWindow.Children.Add(InterectiveCanvas);
-            //Grid.SetRow(InterectiveCanvas, 1);
-            Grid grid = new Grid();
-            grid.RowDefinitions.Add(new RowDefinition() {MinHeight=260});
-            grid.RowDefinitions.Add(new RowDefinition());
-            grid.RowDefinitions.Add(new RowDefinition() {MinHeight=60});
-            grid.ColumnDefinitions.Add(new ColumnDefinition() {MinWidth=410});
-            grid.ColumnDefinitions.Add(new ColumnDefinition() {MinWidth=260});
+            MainGridWindow.Children.Clear();
+
+            MainLabel.Content = "История";
+            MainGridWindow.Children.Add(MainLabel);
+            Grid.SetRow(MainLabel, 0);
+            MainGridWindow.Children.Add(CloseBtn);
+            Grid.SetRow(CloseBtn, 0);
+
+            Grid grid = new Grid() { };
+            grid.ShowGridLines = true;
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(4, GridUnitType.Star) });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(3, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             MainGridWindow.Children.Add(grid);
             Grid.SetRow(grid, 1);
-            ListBox ListOfSessions = new ListBox() { Height = 250, HorizontalAlignment=HorizontalAlignment.Stretch};
-            
-            //Canvas.SetLeft(ListOfSessions, 50);
-            //Canvas.SetTop(ListOfSessions, 50);
-            
 
+            ListBox ListOfSessions = new ListBox() {HorizontalAlignment=HorizontalAlignment.Stretch,
+                VerticalAlignment=VerticalAlignment.Stretch, FontSize=20,
+                SelectionMode = SelectionMode.Single};
+            foreach(User u in users)
+            {
+                ListOfSessions.Items.Add(u);
+            }
             Button Home = new Button()
             {
-                Width = 250,
-                Height = 50,
-                Content = "Вернуться к началу",
-                FontSize = 24,
+                Height = 80,
+                Width = 350,
+                VerticalAlignment = VerticalAlignment.Center,
+                Content = "Вернуться к меню ",
+                FontSize = 40,
                 Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
                 Style = (Style)Application.Current.Resources["RoundButton"]
             };
+            Home.Click += GoHome;
             grid.Children.Add(ListOfSessions);
             Grid.SetRow(ListOfSessions, 0);
             Grid.SetColumn(ListOfSessions, 0);
 
             grid.Children.Add(Home);
-            Grid.SetRow(Home, 2);
+            Grid.SetRow(Home, 1);
             Grid.SetColumn(Home, 1);
-            //Canvas.SetLeft(Home, 510);
-            //Canvas.SetTop(Home, 320);
-            Home.Click += GoHome;
+
+            Button Delete = new Button()
+            {
+                Height = 80,
+                Width = 350,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Content = "Удалить",
+                FontSize = 40,
+                Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
+                Style = (Style)Application.Current.Resources["RoundButton"]
+            };
+            Delete.Click += DeleteItem;
+            grid.Children.Add(Delete);
+            Grid.SetRow(Delete, 0);
+            Grid.SetColumn(Delete, 1);
+
+            void DeleteItem(object sender4, RoutedEventArgs e4)
+            {
+                if (ListOfSessions.SelectedIndex == -1)
+                    MessageBox.Show("Выберите строку для удаления");
+                else ListOfSessions.Items.RemoveAt(ListOfSessions.SelectedIndex);
+            }
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
@@ -294,6 +321,14 @@ namespace Bystroschot
 
         private void StartTestButton_Click(object sender, RoutedEventArgs e)
         {
+            //=========Здесь закидываем экземпляр класса юзер в общий список================
+            User user1 = new User();
+            user1._name = user._name;
+            user1._theme = user._theme;
+            user1._test= user._test;
+            users.Add(user1);
+
+
             MainGridWindow.Children.Clear();
 
             MainLabel.Content = "Theme: " + user._theme + "Test: " + user._test;
@@ -417,6 +452,8 @@ namespace Bystroschot
                 }
             }
         }
+
+
         //int idx = 0;
         //private void ShowContent(object sender, RoutedEventArgs e) //метод для вывода на экран
         //{
@@ -428,7 +465,7 @@ namespace Bystroschot
         //    MainGridWindow.Children.Add(grid);
         //    Grid.SetRow(grid, 1);
 
-            
+
         //    string[] test1var = File.ReadAllLines("1Вариант.txt"); // тут должно быть поле объекта типа User _test
         //    string[] test2var = File.ReadAllLines("2Вариант.txt");
         //    string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
@@ -481,7 +518,7 @@ namespace Bystroschot
         //        grid.Children.Add(imageSecondVar);
 
         //        idx++;
-                
+
         //    }
 
         //}

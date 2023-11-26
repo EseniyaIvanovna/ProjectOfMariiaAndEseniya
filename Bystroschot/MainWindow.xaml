@@ -1,5 +1,5 @@
 ﻿<Window x:Class="Bystroschot.MainWindow"
-        Icon="MainIcon.png"
+        Icon="Resourses/MainIcon.png"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
             <Button x:Name="CloseBtn" Click ="CloseButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right"  VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="40" Height="50" Width="50" >
                 <Button.Background>
-                    <ImageBrush ImageSource="/exit.png"/>
+                    <ImageBrush ImageSource="Resourses/exit.png"/>
                 </Button.Background>
             </Button>
             <Label x:Name="MainLabel" Content="Быстросчёт" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="60"/>
