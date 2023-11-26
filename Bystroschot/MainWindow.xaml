@@ -12,15 +12,14 @@
 
             <Grid.RowDefinitions>
 
-                <RowDefinition x:Name="FirstRow" Height="80*" />
-                <RowDefinition x:Name="SecondRow" Height="420*"/>
-            </Grid.RowDefinitions>
-            <Button x:Name="CloseBtn" Content="X" Click ="CloseButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="900,15,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" MaxHeight="50" MinHeight="50" MaxWidth="50" MinWidth="50" FontSize="40" Height="123" Width="95" Grid.RowSpan="2"/>
-            <Label x:Name="MainLabel" Content="Быстросчёт" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="80" Width="600" Margin="62,0,55.6,0.2" FontSize="48"/>
-            
+                <RowDefinition x:Name="FirstRow" Height="1*" />
+                <RowDefinition x:Name="SecondRow" Height="5*"/>
 
+            </Grid.RowDefinitions>
+            <Button x:Name="CloseBtn" Content="X" Click ="CloseButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right"  VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="40" Height="50" Width="50" />
+            <Label x:Name="MainLabel" Content="Быстросчёт" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="60"/>
         </Grid>
-        
+
     </Border>
 </Window>
     
