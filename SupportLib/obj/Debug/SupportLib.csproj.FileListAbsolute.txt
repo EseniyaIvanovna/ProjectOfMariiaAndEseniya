@@ -4,3 +4,9 @@ C:\проекты\PrjctByUs\SupportLib\obj\Debug\SupportLib.csproj.AssemblyRefer
 C:\проекты\PrjctByUs\SupportLib\obj\Debug\SupportLib.csproj.CoreCompileInputs.cache
 C:\проекты\PrjctByUs\SupportLib\obj\Debug\SupportLib.dll
 C:\проекты\PrjctByUs\SupportLib\obj\Debug\SupportLib.pdb
+D:\Project\SupportLib\bin\Debug\SupportLib.dll
+D:\Project\SupportLib\bin\Debug\SupportLib.pdb
+D:\Project\SupportLib\obj\Debug\SupportLib.csproj.AssemblyReference.cache
+D:\Project\SupportLib\obj\Debug\SupportLib.csproj.CoreCompileInputs.cache
+D:\Project\SupportLib\obj\Debug\SupportLib.dll
+D:\Project\SupportLib\obj\Debug\SupportLib.pdb

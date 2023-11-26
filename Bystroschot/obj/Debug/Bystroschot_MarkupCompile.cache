@@ -4,16 +4,24 @@
 winexe
 C#
 .cs
-C:\проекты\PrjctByUs\Bystroschot\obj\Debug\
+D:\Project\Bystroschot\obj\Debug\
 Bystroschot
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\проекты\PrjctByUs\Bystroschot\App.xaml
 1219584333
 
 51579654133
 14-294936941
+=======
+D:\Project\Bystroschot\App.xaml
+1219584333
+
+51579654133
+231724029476
+>>>>>>> 7a9ef618e068d670a49245ddf2a821ea95af8d82
 MainWindow.xaml;
 
 False
