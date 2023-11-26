@@ -132,5 +132,14 @@
       <Name>SupportLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\emblemunreadable_93487.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\MainIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\exit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
