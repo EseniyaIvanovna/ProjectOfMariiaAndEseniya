@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using SupportLib;
+using System.Xml.Serialization;
 
 namespace Bystroschot
 {
@@ -122,6 +123,10 @@ namespace Bystroschot
             grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             MainGridWindow.Children.Add(grid);
             Grid.SetRow(grid, 1);
+
+            FileInfo xamlHistory = new FileInfo(@"history.txt");
+            string AbsAddres = xamlHistory.FullName;
+            Restore(users, AbsAddres);
 
             ListBox ListOfSessions = new ListBox() {HorizontalAlignment=HorizontalAlignment.Stretch,
                 VerticalAlignment=VerticalAlignment.Stretch, FontSize=20,
@@ -246,9 +251,9 @@ namespace Bystroschot
                             FontSize = 40
                         };
                         //====================================Для примера
-                        TopicBox.Items.Add("Тема1");
-                        TopicBox.Items.Add("Тема2");
-                        TopicBox.Items.Add("Тема3");
+                        TopicBox.Items.Add("Логарифмы");
+                        //TopicBox.Items.Add("Тема 2"); //Maria: я закомитила, чтобы сразу был вид законченный, потом откроем если что
+                        //TopicBox.Items.Add("Тема 3");
                         //=====================================
                         TopicBox.SelectionChanged += TopicChanged;
                         grid.Children.Add(TopicChoice);
@@ -281,9 +286,9 @@ namespace Bystroschot
                             };
                             TestTopicBox.SelectionChanged += TestChanged;
                             //====================================Для примера
-                            TestTopicBox.Items.Add("Тест1");
-                            TestTopicBox.Items.Add("Тест2");
-                            TestTopicBox.Items.Add("Тест3");
+                            TestTopicBox.Items.Add("А");
+                            TestTopicBox.Items.Add("Б"); 
+                            TestTopicBox.Items.Add("В");
                             //====================================Для примера
                             grid.Children.Add(TestChoice);
                             grid.Children.Add(TestTopicBox);
@@ -319,16 +324,40 @@ namespace Bystroschot
             }          
         }
 
+        //Есения, если ты это читаешь, то не обращай внимания, там дальше немножко scary, но это норма
+        string[] test1var, // = File.ReadAllLines("1Вариант.txt"); // тут должно быть поле объекта типа User _test
+                 test2var; //= File.ReadAllLines("2Вариант.txt"); 
+        string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
+        int idx = 0;
+        
         private void StartTestButton_Click(object sender, RoutedEventArgs e)
         {
+           
             //=========Здесь закидываем экземпляр класса юзер в общий список================
             User user1 = new User();
             user1._name = user._name;
             user1._theme = user._theme;
             user1._test= user._test;
             users.Add(user1);
-
-
+            Save(users);
+            if(user1._test == "Б")
+            {
+                test1var = File.ReadAllLines("Б(1).txt");
+                test2var = File.ReadAllLines("Б(2).txt");
+            }
+            else if (user1._test == "А")
+            {
+                test1var = File.ReadAllLines("А(1).txt");
+                test2var = File.ReadAllLines("А(2).txt");
+                
+            }
+            else if (user1._test == "В")
+            {
+                test1var = File.ReadAllLines("В(1).txt");
+                test2var = File.ReadAllLines("В(2).txt");
+            }
+            int len = test1var.Length;
+            idx = 0;
             MainGridWindow.Children.Clear();
 
             MainLabel.Content = "Theme: " + user._theme + "Test: " + user._test;
@@ -346,32 +375,40 @@ namespace Bystroschot
             MainGridWindow.Children.Add(grid);
             Grid.SetRow(grid, 1);
 
-            Button Home = new Button()
+
+            //пока я закомтила эту кнопку возвращения домой, на ее место встанет кнопка "назад"
+
+            //Button Home = new Button()
+            //{
+            //    Height = 80,
+            //    Width=400,
+            //    HorizontalAlignment = HorizontalAlignment.Center,
+            //    VerticalAlignment = VerticalAlignment.Center,
+            //    Content = "Вернуться к меню",
+            //    FontSize = 40,
+            //    Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
+            //    Style = (Style)Application.Current.Resources["RoundButton"]
+            //};
+            //Home.Click += GoHome;
+            //grid.Children.Add(Home);//0 ребенок
+            //Grid.SetRow(Home, 1);
+           
+            Button Return = new Button()
             {
                 Height = 80,
-                Width=400,
+                Width = 400,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
-                Content = "Вернуться к меню",
+                Content = "Назад",
                 FontSize = 40,
                 Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
                 Style = (Style)Application.Current.Resources["RoundButton"]
             };
-            Home.Click += GoHome;
-            grid.Children.Add(Home);//0 ребенок
-            Grid.SetRow(Home, 1);
-            Grid.SetColumn(Home, 0);
-            //    //ScrollViewer firstVariant = new ScrollViewer() { Height = 559, SnapsToDevicePixels = true, VerticalScrollBarVisibility = ScrollBarVisibility.Hidden, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto };
-            //    //Canvas.SetLeft(firstVariant, 10);
-            //    //Canvas.SetTop(firstVariant, 182);
-
-            //    //ScrollViewer secondVariant = new ScrollViewer();
-            //    //Canvas.SetLeft(secondVariant, 432);
-            //    //Canvas.SetTop(secondVariant, 182);
-            //    //InterectiveCanvas.Children.Add(firstVariant);
-            //    //InterectiveCanvas.Children.Add(secondVariant);
-
-            //Обновленный вариант вывода картинок на экран
+            Return.Click += GoBack;
+            grid.Children.Add(Return);//0 ребенок
+            Grid.SetRow(Return, 1);
+           
+            
             Button ShowFormula = new Button()
             {
                 Height = 80,
@@ -383,21 +420,77 @@ namespace Bystroschot
                 Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
                 Style = (Style)Application.Current.Resources["RoundButton"]
             };
-            int idx = 0;
+            
             ShowFormula.Click += ShowContent;
             grid.Children.Add(ShowFormula);//1 ребенок
             Grid.SetRow(ShowFormula, 1);
             Grid.SetColumn(ShowFormula, 1);
-            //}
+
+
+            //метод для кнопки назад
+            void GoBack(object sender1, RoutedEventArgs e1)
+            {
+                if (idx > 0)
+                {
+                    idx--;
+                    formula_in_math_format_1var = test1var[idx];
+                    var converter1 = new AnalyticsTeXConverter();
+                    formula_in_Tex_format_1var = converter1.Convert(formula_in_math_format_1var);//преобразование в Latex
+                    string path = Equation.CreateEquationFirstVariant(formula_in_Tex_format_1var);
+                    FileInfo f = new FileInfo(path);
+                    string AbsoluteUri = f.FullName;
+                    BitmapImage bitmapImage = new BitmapImage();
+                    using (FileStream stream = new FileStream(AbsoluteUri, FileMode.Open, FileAccess.Read))
+                    {
+                        bitmapImage.BeginInit();
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.StreamSource = stream;
+                        bitmapImage.EndInit();
+                    }
+                    if (grid.Children.Count > 2)
+                    {
+                        grid.Children.RemoveAt(3);
+                        grid.Children.RemoveAt(2);
+                    }
+                    //grid.Children.Clear(); //да почему это не работает????!!!! откуда наслоение, если я очистила грид перед выводом
+                    Image imageFirstVar = new Image() { Width = 300, Height = 300 };
+                    imageFirstVar.Source = bitmapImage;
+                    Grid.SetColumn(imageFirstVar, 0);
+                    Grid.SetRow(imageFirstVar, 0);
+                    grid.Children.Add(imageFirstVar);//2 ребёнок
+
+                    //2variant
+                    formula_in_math_format_2var = test2var[idx];
+                    var converter2 = new AnalyticsTeXConverter();
+                    formula_in_Tex_format_2var = converter2.Convert(formula_in_math_format_2var);//преобразование в Latex
+                    string path2 = Equation.CreateEquationSecondVariant(formula_in_Tex_format_2var);
+                    FileInfo f2 = new FileInfo(path2);
+                    string AbsoluteUri2 = f2.FullName;
+                    BitmapImage bitmapImage2 = new BitmapImage();
+                    using (FileStream stream = new FileStream(AbsoluteUri2, FileMode.Open, FileAccess.Read))
+                    {
+                        bitmapImage2.BeginInit();
+                        bitmapImage2.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage2.StreamSource = stream;
+                        bitmapImage2.EndInit();
+                    }
+                    //grid.Children.Clear(); //не понимаю, почему, но если строчку разкомитить, то выводится будет только второй вариант
+                    Image imageSecondVar = new Image() { Width = 300, Height = 300 };
+                    imageSecondVar.Source = bitmapImage2;
+                    Grid.SetColumn(imageSecondVar, 1);
+                    Grid.SetRow(imageSecondVar, 0);
+                    grid.Children.Add(imageSecondVar);//3 ребёнок
+
+                    
+                }
+            }
+
 
             //я твой метод"ShowContent" закинула сюда
             void ShowContent(object sender1, RoutedEventArgs e1)
             {
-                string[] test1var = File.ReadAllLines("1Вариант.txt"); // тут должно быть поле объекта типа User _test
-                string[] test2var = File.ReadAllLines("2Вариант.txt");
-                string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
-
-                if (idx < test1var.Length) //предусматривается, что все файлы тестов для разных вариантов будут одной длины
+               
+                if (idx < len) //предусматривается, что все файлы тестов для разных вариантов будут одной длины
                 {
                     //1variant
                     formula_in_math_format_1var = test1var[idx];
@@ -420,7 +513,7 @@ namespace Bystroschot
                         grid.Children.RemoveAt(2);
                     }
                     //grid.Children.Clear(); //да почему это не работает????!!!! откуда наслоение, если я очистила грид перед выводом
-                    Image imageFirstVar = new Image() { Width = 200, Height = 200 };
+                    Image imageFirstVar = new Image() { Width = 300, Height = 300 };
                     imageFirstVar.Source = bitmapImage;
                     Grid.SetColumn(imageFirstVar, 0);
                     Grid.SetRow(imageFirstVar, 0);
@@ -442,86 +535,26 @@ namespace Bystroschot
                         bitmapImage2.EndInit();
                     }
                     //grid.Children.Clear(); //не понимаю, почему, но если строчку разкомитить, то выводится будет только второй вариант
-                    Image imageSecondVar = new Image() { Width = 200, Height = 200 };
+                    Image imageSecondVar = new Image() { Width = 300, Height = 300 };
                     imageSecondVar.Source = bitmapImage2;
                     Grid.SetColumn(imageSecondVar, 1);
                     Grid.SetRow(imageSecondVar, 0);
                     grid.Children.Add(imageSecondVar);//3 ребёнок
 
                     idx++;
+                    if (idx == test1var.Length)
+                    {
+                        ShowFormula.Content = "Завершить тест";
+                        ShowFormula.Click += GoHome;
+                    }
                 }
+               
             }
         }
-
-
-        //int idx = 0;
-        //private void ShowContent(object sender, RoutedEventArgs e) //метод для вывода на экран
-        //{
-        //    Grid grid = new Grid();
-        //    grid.RowDefinitions.Add(new RowDefinition());
-        //    grid.RowDefinitions.Add(new RowDefinition());
-        //    grid.ColumnDefinitions.Add(new ColumnDefinition());
-        //    grid.ColumnDefinitions.Add(new ColumnDefinition());
-        //    MainGridWindow.Children.Add(grid);
-        //    Grid.SetRow(grid, 1);
-
-
-        //    string[] test1var = File.ReadAllLines("1Вариант.txt"); // тут должно быть поле объекта типа User _test
-        //    string[] test2var = File.ReadAllLines("2Вариант.txt");
-        //    string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
-
-        //    if (idx < test1var.Length) //предусматривается, что все файлы тестов для разных вариантов будут одной длины
-        //    {
-        //       //1variant
-        //        formula_in_math_format_1var = test1var[idx];
-        //        var converter1 = new AnalyticsTeXConverter();
-        //        formula_in_Tex_format_1var = converter1.Convert(formula_in_math_format_1var);//преобразование в Latex
-        //        string path = Equation.CreateEquationFirstVariant(formula_in_Tex_format_1var);
-        //        FileInfo f = new FileInfo(path);
-        //        string AbsoluteUri = f.FullName;
-        //        BitmapImage bitmapImage = new BitmapImage();
-        //        using (FileStream stream = new FileStream(AbsoluteUri, FileMode.Open, FileAccess.Read))
-        //        {
-        //            bitmapImage.BeginInit();
-        //            bitmapImage.CacheOption = BitmapCacheOption.OnLoad; 
-        //            bitmapImage.StreamSource = stream;
-        //            bitmapImage.EndInit();
-        //        }
-
-        //        grid.Children.Clear(); //да почему это не работает????!!!! откуда наслоение, если я очистила грид перед выводом
-        //        Image imageFirstVar = new Image() { Width = 200, Height = 200 };
-        //        imageFirstVar.Source = bitmapImage;
-        //        Grid.SetColumn(imageFirstVar, 0);
-        //        Grid.SetRow(imageFirstVar, 0);
-        //        grid.Children.Add(imageFirstVar);
-
-        //        //2variant
-        //        formula_in_math_format_2var = test2var[idx];
-        //        var converter2 = new AnalyticsTeXConverter();
-        //        formula_in_Tex_format_2var = converter2.Convert(formula_in_math_format_2var);//преобразование в Latex
-        //        string path2 = Equation.CreateEquationSecondVariant(formula_in_Tex_format_2var);
-        //        FileInfo f2 = new FileInfo(path2);
-        //        string AbsoluteUri2 = f2.FullName;
-        //        BitmapImage bitmapImage2 = new BitmapImage();
-        //        using (FileStream stream = new FileStream(AbsoluteUri2, FileMode.Open, FileAccess.Read))
-        //        {
-        //            bitmapImage2.BeginInit();
-        //            bitmapImage2.CacheOption = BitmapCacheOption.OnLoad;
-        //            bitmapImage2.StreamSource = stream;
-        //            bitmapImage2.EndInit();
-        //        }
-        //        //grid.Children.Clear(); //не понимаю, почему, но если строчку разкомитить, то выводится будет только второй вариант
-        //        Image imageSecondVar = new Image() { Width = 200, Height = 200 };
-        //        imageSecondVar.Source = bitmapImage2;
-        //        Grid.SetColumn(imageSecondVar, 1);
-        //        Grid.SetRow(imageSecondVar, 0);
-        //        grid.Children.Add(imageSecondVar);
-
-        //        idx++;
-
-        //    }
-
-        //}
+        private void PrintFormula()
+        {
+            //не удалять, допишу
+        }
         private void GoHome(object sender, RoutedEventArgs e)
         {
             StartWorking();
@@ -537,6 +570,33 @@ namespace Bystroschot
                 System.Windows.Application.Current.Shutdown();
             }
         }
+        public void Save(List<User> user)
+        {
+            using (var file = new FileStream("history.txt", FileMode.Create))
+            {
+                var seralize = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
+                seralize.Serialize(file, user);
+            }
+
+
+        }
+
+        public void Restore(List<User> user, string AbsoluteAddres)
+        {
+
+            //string path = System.IO.Path.Combine(dir, "winners.txt");
+            string[] strok = File.ReadAllLines("history.txt");
+            if (strok.Length != 0)
+            {
+                using (var file = new FileStream(AbsoluteAddres, FileMode.Open))
+                {
+                    var xml = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
+
+                    user = (List<User>)xml.Deserialize(file);
+                }
+            }
+        }
+
     }
     static class Equation
     {
@@ -545,7 +605,7 @@ namespace Bystroschot
             const string fileName = @"Equation1Var.PNG";
             var parser = new TexFormulaParser();
             var formula = parser.Parse(Latex);
-            var pngByte = formula.RenderToPng(30.0, 0.0, 0.0, "Arial");
+            var pngByte = formula.RenderToPng(150.0, 0.0, 0.0, "Arial");
             File.WriteAllBytes(fileName, pngByte);
             return fileName;
         }
@@ -554,7 +614,7 @@ namespace Bystroschot
             const string fileName = @"Equation2Var.PNG";
             var parser = new TexFormulaParser();
             var formula = parser.Parse(Latex);
-            var pngByte = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+            var pngByte = formula.RenderToPng(150.0, 0.0, 0.0, "Arial");
             File.WriteAllBytes(fileName, pngByte);
             return fileName;
         }

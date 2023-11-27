@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SupportLib
 {
+    [Serializable]
     public class User
     {
         public string _name { get; set; }
