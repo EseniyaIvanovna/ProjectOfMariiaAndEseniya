@@ -30,17 +30,12 @@ D:\Project\Bystroschot\bin\Debug\Bystroschot.pdb
 D:\Project\Bystroschot\bin\Debug\Analytics.dll
 D:\Project\Bystroschot\bin\Debug\Aspose.TeX.dll
 D:\Project\Bystroschot\bin\Debug\Exversion.dll
-D:\Project\Bystroschot\bin\Debug\Mathematics.dll
-D:\Project\Bystroschot\bin\Debug\NRTE.dll
-D:\Project\Bystroschot\bin\Debug\Physics.dll
 D:\Project\Bystroschot\bin\Debug\SupportLib.dll
 D:\Project\Bystroschot\bin\Debug\System.Drawing.Common.dll
 D:\Project\Bystroschot\bin\Debug\WpfMath.dll
 D:\Project\Bystroschot\bin\Debug\XamlMath.Shared.dll
 D:\Project\Bystroschot\bin\Debug\SupportLib.pdb
-D:\Project\Bystroschot\bin\Debug\Analytics.xml
 D:\Project\Bystroschot\bin\Debug\Aspose.TeX.xml
-D:\Project\Bystroschot\bin\Debug\Exversion.xml
 D:\Project\Bystroschot\bin\Debug\Mathematics.xml
 D:\Project\Bystroschot\bin\Debug\NRTE.xml
 D:\Project\Bystroschot\bin\Debug\Physics.xml
