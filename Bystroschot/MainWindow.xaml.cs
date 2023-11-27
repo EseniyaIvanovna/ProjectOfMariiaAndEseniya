@@ -31,12 +31,12 @@ namespace Bystroschot
     public partial class MainWindow : Window
     {
         public static User user = new User();
-        private BaseConverter converter;
         List<User> users = new List<User>();//хранение истории
         public MainWindow()
         {
             InitializeComponent();
             StartWorking();
+            Restore();
         }
         public void StartWorking()
         {
@@ -114,6 +114,8 @@ namespace Bystroschot
             Grid.SetRow(MainLabel, 0);
             MainGridWindow.Children.Add(CloseBtn);
             Grid.SetRow(CloseBtn, 0);
+            MainGridWindow.Children.Add(MainHome);
+            Grid.SetRow(MainHome, 0);
 
             Grid grid = new Grid() { };
             grid.ShowGridLines = true;
@@ -126,7 +128,6 @@ namespace Bystroschot
 
             FileInfo xamlHistory = new FileInfo(@"history.txt");
             string AbsAddres = xamlHistory.FullName;
-            Restore(users, AbsAddres);
 
             ListBox ListOfSessions = new ListBox() {HorizontalAlignment=HorizontalAlignment.Stretch,
                 VerticalAlignment=VerticalAlignment.Stretch, FontSize=20,
@@ -135,24 +136,24 @@ namespace Bystroschot
             {
                 ListOfSessions.Items.Add(u);
             }
-            Button Home = new Button()
-            {
-                Height = 80,
-                Width = 350,
-                VerticalAlignment = VerticalAlignment.Center,
-                Content = "Вернуться к меню ",
-                FontSize = 40,
-                Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
-                Style = (Style)Application.Current.Resources["RoundButton"]
-            };
-            Home.Click += GoHome;
+            //Button Home = new Button()
+            //{
+            //    Height = 80,
+            //    Width = 350,
+            //    VerticalAlignment = VerticalAlignment.Center,
+            //    Content = "Вернуться к меню ",
+            //    FontSize = 40,
+            //    Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
+            //    Style = (Style)Application.Current.Resources["RoundButton"]
+            //};
+            //Home.Click += GoHome;
             grid.Children.Add(ListOfSessions);
             Grid.SetRow(ListOfSessions, 0);
             Grid.SetColumn(ListOfSessions, 0);
 
-            grid.Children.Add(Home);
-            Grid.SetRow(Home, 1);
-            Grid.SetColumn(Home, 1);
+            //grid.Children.Add(Home);
+            //Grid.SetRow(Home, 1);
+            //Grid.SetColumn(Home, 1);
 
             Button Delete = new Button()
             {
@@ -174,7 +175,11 @@ namespace Bystroschot
             {
                 if (ListOfSessions.SelectedIndex == -1)
                     MessageBox.Show("Выберите строку для удаления");
-                else ListOfSessions.Items.RemoveAt(ListOfSessions.SelectedIndex);
+                else
+                {
+                    users.RemoveAt(ListOfSessions.SelectedIndex);
+                    ListOfSessions.Items.RemoveAt(ListOfSessions.SelectedIndex);
+                }
             }
         }
 
@@ -186,6 +191,8 @@ namespace Bystroschot
             Grid.SetRow(MainLabel, 0);
             MainGridWindow.Children.Add(CloseBtn);
             Grid.SetRow(CloseBtn, 0);
+            MainGridWindow.Children.Add(MainHome);
+            Grid.SetRow(MainHome, 0);
 
             Grid grid = new Grid();
             grid.ShowGridLines = true;
@@ -339,7 +346,6 @@ namespace Bystroschot
             user1._theme = user._theme;
             user1._test= user._test;
             users.Add(user1);
-            Save(users);
             if(user1._test == "Б")
             {
                 test1var = File.ReadAllLines("Б(1).txt");
@@ -360,11 +366,13 @@ namespace Bystroschot
             idx = 0;
             MainGridWindow.Children.Clear();
 
-            MainLabel.Content = "Theme: " + user._theme + "Test: " + user._test;
+            MainLabel.Content = "Тема: " + user._theme + "Тест: " + user._test;
             MainGridWindow.Children.Add(MainLabel);
             Grid.SetRow(MainLabel, 0);
             MainGridWindow.Children.Add(CloseBtn);
             Grid.SetRow(CloseBtn, 0);
+            MainGridWindow.Children.Add(MainHome);
+            Grid.SetRow(MainHome, 0);
 
             Grid grid = new Grid();
             grid.ShowGridLines = true;
@@ -566,37 +574,32 @@ namespace Bystroschot
             MessageBoxResult result = MessageBox.Show("Вы хотите выйти из приложения?", "Подтверждение выхода", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
+                Save();
                 // Закрытие приложения
                 System.Windows.Application.Current.Shutdown();
             }
         }
-        public void Save(List<User> user)
+        public void Save()
         {
-            using (var file = new FileStream("history.txt", FileMode.Create))
+            XmlSerializer seralize = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
+            using (FileStream file = new FileStream("history.xml", FileMode.OpenOrCreate))
             {
-                var seralize = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
-                seralize.Serialize(file, user);
+                seralize.Serialize(file, users);
             }
-
-
         }
 
-        public void Restore(List<User> user, string AbsoluteAddres)
+        public void Restore()
         {
-
-            //string path = System.IO.Path.Combine(dir, "winners.txt");
-            string[] strok = File.ReadAllLines("history.txt");
-            if (strok.Length != 0)
+            string[] strok = File.ReadAllLines("history.xml");
+            if (strok.Length == 0)
             {
-                using (var file = new FileStream(AbsoluteAddres, FileMode.Open))
+                using (var file = new FileStream("history.xml", FileMode.OpenOrCreate))
                 {
                     var xml = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
-
-                    user = (List<User>)xml.Deserialize(file);
+                    users = (List<User>)xml.Deserialize(file);
                 }
-            }
+            }                       
         }
-
     }
     static class Equation
     {

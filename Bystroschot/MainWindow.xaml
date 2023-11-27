@@ -26,6 +26,11 @@
                 </Button.Background>
             </Button>
             <Label x:Name="MainLabel" Content="Быстросчёт" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="60"/>
+            <Button x:Name="MainHome" Click="GoHome" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="50" Height="50" Margin="0,0,50,0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resourses/home-icon.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
 
     </Border>

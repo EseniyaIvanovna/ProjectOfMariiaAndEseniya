@@ -136,9 +136,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\emblemunreadable_93487.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resourses\MainIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MainIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\home-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
