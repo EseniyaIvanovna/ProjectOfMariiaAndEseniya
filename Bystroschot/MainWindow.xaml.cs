@@ -169,6 +169,7 @@ namespace Bystroschot
                 {
                     users.RemoveAt(ListOfSessions.SelectedIndex);
                     ListOfSessions.Items.RemoveAt(ListOfSessions.SelectedIndex);
+                    Save();
                 }
             }
         }
@@ -511,7 +512,7 @@ namespace Bystroschot
         public void Restore()
         {
             string[] strok = File.ReadAllLines("history.xml");
-            if (strok.Length == 0)
+            if (strok.Length != 0)
             {
                 using (var file = new FileStream("history.xml", FileMode.OpenOrCreate))
                 {
