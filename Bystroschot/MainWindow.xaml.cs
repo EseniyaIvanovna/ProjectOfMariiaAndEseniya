@@ -169,7 +169,7 @@ namespace Bystroschot
                 {
                     users.RemoveAt(ListOfSessions.SelectedIndex);
                     ListOfSessions.Items.RemoveAt(ListOfSessions.SelectedIndex);
-                    Save();
+                   //Save();
                 }
             }
         }
