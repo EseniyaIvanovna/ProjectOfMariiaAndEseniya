@@ -81,16 +81,16 @@ namespace Bystroschot
                 Style = (Style)Application.Current.Resources["RoundButton"]
             };
             HistoryButton.Click += HistoryButton_Click;
-            Button AddingButton = new Button()
-            {
-                Height = 80,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Center,
-                Content = "Настройки",
-                FontSize = 40,
-                Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
-                Style = (Style)Application.Current.Resources["RoundButton"]
-            };
+            //Button AddingButton = new Button()
+            //{
+            //    Height = 80,
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    VerticalAlignment = VerticalAlignment.Center,
+            //    Content = "Настройки",
+            //    FontSize = 40,
+            //    Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
+            //    Style = (Style)Application.Current.Resources["RoundButton"]
+            //};
 
             grid.Children.Add(TestButton);
             Grid.SetRow(TestButton, 0);
@@ -100,9 +100,9 @@ namespace Bystroschot
             Grid.SetRow(HistoryButton, 1);
             Grid.SetColumn(HistoryButton, 1);
 
-            grid.Children.Add(AddingButton);
-            Grid.SetRow(AddingButton, 2);
-            Grid.SetColumn(AddingButton, 1);
+            //grid.Children.Add(AddingButton);
+            //Grid.SetRow(AddingButton, 2);
+            //Grid.SetColumn(AddingButton, 1);
         }
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
@@ -456,7 +456,7 @@ namespace Bystroschot
                 grid.Children.RemoveAt(3);
                 grid.Children.RemoveAt(2);
             }
-            Image imageFirstVar = new Image() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
+            Image imageFirstVar = new Image() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch, Margin= new Thickness(50, 50, 50, 50) };
             imageFirstVar.Source = bitmapImage;
             Grid.SetColumn(imageFirstVar, 0);
             Grid.SetRow(imageFirstVar, 0);
@@ -478,7 +478,7 @@ namespace Bystroschot
                 bitmapImage2.EndInit();
             }
             
-            Image imageSecondVar = new Image() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
+            Image imageSecondVar = new Image() { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch, Margin = new Thickness(50,50,50,50) };
             imageSecondVar.Source = bitmapImage2;
             Grid.SetColumn(imageSecondVar, 1);
             Grid.SetRow(imageSecondVar, 0);
@@ -510,7 +510,7 @@ namespace Bystroschot
         }
 
         public void Restore()
-        {
+        {            
             string[] strok = File.ReadAllLines("history.xml");
             if (strok.Length != 0)
             {

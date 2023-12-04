@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <User>
-    <_date>28:11:2023</_date>
-    <_name>11b</_name>
+    <_date>04:12:2023</_date>
+    <_name>1 a</_name>
     <_theme>Логарифмы</_theme>
-    <_test>Б</_test>
+    <_test>А</_test>
   </User>
   <User>
-    <_date>28:11:2023</_date>
-    <_name>11aa</_name>
+    <_date>04:12:2023</_date>
+    <_name>3 f</_name>
     <_theme>Логарифмы</_theme>
     <_test>В</_test>
   </User>
