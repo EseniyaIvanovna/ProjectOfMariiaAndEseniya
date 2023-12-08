@@ -372,7 +372,17 @@ namespace Bystroschot
             MainGridWindow.Children.Add(grid);
             Grid.SetRow(grid, 1);
 
-
+            Button ShowFormula = new Button()
+            {
+                Height = 80,
+                Width = 400,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Content = "Показать формулу",
+                FontSize = 40,
+                Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
+                Style = (Style)Application.Current.Resources["RoundButton"]
+            };
             Button Return = new Button()
             {
                 Height = 80,
@@ -389,30 +399,26 @@ namespace Bystroschot
             Return.Click += GoBack;
            // Return.IsTabStop = false;
             grid.Children.Add(Return);//0 ребенок
-            Grid.SetRow(Return, 1);
-           
+            Grid.SetRow(Return, 1);          
             
-            Button ShowFormula = new Button()
-            {
-                Height = 80,
-                Width = 400,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Content = "Показать формулу",
-                FontSize = 40,
-                Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
-                Style = (Style)Application.Current.Resources["RoundButton"]
-            };
+            
             
             ShowFormula.Click += ShowContent;
             grid.Children.Add(ShowFormula);//1 ребенок
             Grid.SetRow(ShowFormula, 1);
             Grid.SetColumn(ShowFormula, 1);
-
+            PrintFormula(grid, 0);
 
             //метод для кнопки назад
             void GoBack(object sender1, RoutedEventArgs e1)
             {
+                if (idx == len-1)
+                {
+                    ShowFormula.Content = "Показать формулу";
+                    ShowFormula.Click += ShowContent;
+                    ShowFormula.Click -= GoHome;
+
+                }
                 if (idx > 0)
                 {
                     idx--;
@@ -420,15 +426,15 @@ namespace Bystroschot
                 }
             }
             void ShowContent(object sender1, RoutedEventArgs e1)
-            {
-               
+            {               
                 if (idx < len) //предусматривается, что все файлы тестов для разных вариантов будут одной длины
                 {
-                    PrintFormula(grid, idx);
                     idx++;
-                    if (idx == test1var.Length)
+                    PrintFormula(grid, idx);
+                    if (idx == len-1)
                     {
                         ShowFormula.Content = "Завершить тест";
+                        ShowFormula.Click -= ShowContent;
                         ShowFormula.Click += GoHome;
                     }
                 }
@@ -437,7 +443,7 @@ namespace Bystroschot
         }
         private void PrintFormula(Grid grid, int index)
         {
-            formula_in_math_format_1var = test1var[idx];
+            formula_in_math_format_1var = test1var[index];
             var converter1 = new AnalyticsTeXConverter();
             formula_in_Tex_format_1var = converter1.Convert(formula_in_math_format_1var);//преобразование в Latex
             string path = Equation.CreateEquationFirstVariant(formula_in_Tex_format_1var);
@@ -463,7 +469,7 @@ namespace Bystroschot
             grid.Children.Add(imageFirstVar);//2 ребёнок
 
             //2variant
-            formula_in_math_format_2var = test2var[idx];
+            formula_in_math_format_2var = test2var[index];
             var converter2 = new AnalyticsTeXConverter();
             formula_in_Tex_format_2var = converter2.Convert(formula_in_math_format_2var);//преобразование в Latex
             string path2 = Equation.CreateEquationSecondVariant(formula_in_Tex_format_2var);
