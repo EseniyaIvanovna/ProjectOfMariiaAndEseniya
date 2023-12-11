@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MainIcon.ico</ApplicationIcon>
+    <ApplicationIcon>MYMainIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Analytics, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -142,10 +142,13 @@
     <Resource Include="Resourses\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MainIcon.ico" />
+    <Resource Include="Resourses\home-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\home-icon.png" />
+    <Resource Include="Resourses\MainIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MYMainIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
