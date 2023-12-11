@@ -51,5 +51,3 @@ D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.CoreCompileInputs.cache
 D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.CopyComplete
 D:\Project\Bystroschot\obj\Debug\Bystroschot.exe
 D:\Project\Bystroschot\obj\Debug\Bystroschot.pdb
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\System.Drawing.Common.dll
-C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.csproj.CopyComplete

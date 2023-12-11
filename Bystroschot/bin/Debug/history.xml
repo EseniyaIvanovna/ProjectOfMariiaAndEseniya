@@ -1,86 +1,9 @@
 <?xml version="1.0"?>
 <ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <User>
-    <_date>08:12:2023</_date>
-    <_name>1</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
+    <_date>11:12:2023</_date>
     <_name>11</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-</ArrayOfUser>   <_date>08:12:2023</_date>
-    <_name>1 а</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>Б</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>2</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>Б</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>1</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>11</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>11</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>10</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>10</_name>
     <_theme>Логарифмы</_theme>
     <_test>В</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>10</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>10</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>11</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>11</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
-  </User>
-  <User>
-    <_date>08:12:2023</_date>
-    <_name>10</_name>
-    <_theme>Логарифмы</_theme>
-    <_test>А</_test>
   </User>
 </ArrayOfUser>
