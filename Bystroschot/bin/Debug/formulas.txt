@@ -1,2 +1,0 @@
-A*log{3}(x+m)-B/log{2}(x+n)
-A*log{333}(x+m)-AAA/log{456}(x+n)

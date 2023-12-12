@@ -10,3 +10,7 @@ D:\Project\SupportLib\obj\Debug\SupportLib.csproj.AssemblyReference.cache
 D:\Project\SupportLib\obj\Debug\SupportLib.csproj.CoreCompileInputs.cache
 D:\Project\SupportLib\obj\Debug\SupportLib.dll
 D:\Project\SupportLib\obj\Debug\SupportLib.pdb
+C:\проекты\PrjctByUs\SupportLib\bin\Debug\Aspose.TeX.xml
+C:\проекты\PrjctByUs\SupportLib\bin\Debug\Mathematics.xml
+C:\проекты\PrjctByUs\SupportLib\bin\Debug\NRTE.xml
+C:\проекты\PrjctByUs\SupportLib\bin\Debug\Physics.xml

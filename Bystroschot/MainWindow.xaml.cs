@@ -1,35 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using WpfMath;
-using Analytics;
-using Exversion;
 using Exversion.Analytics;
-using Aspose.TeX;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using SupportLib;
 using System.Xml.Serialization;
+using WpfMath;
 
 namespace Bystroschot
 {
-
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        string[] test1var, test2var;
+        string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
+        int idx = 0;
         public static User user = new User();
         List<User> users = new List<User>();//хранение истории
         public MainWindow()
@@ -81,17 +72,7 @@ namespace Bystroschot
                 Style = (Style)Application.Current.Resources["RoundButton"]
             };
             HistoryButton.Click += HistoryButton_Click;
-            //Button AddingButton = new Button()
-            //{
-            //    Height = 80,
-            //    HorizontalAlignment = HorizontalAlignment.Stretch,
-            //    VerticalAlignment = VerticalAlignment.Center,
-            //    Content = "Настройки",
-            //    FontSize = 40,
-            //    Background = new SolidColorBrush(Color.FromRgb(192, 192, 255)),
-            //    Style = (Style)Application.Current.Resources["RoundButton"]
-            //};
-
+            
             grid.Children.Add(TestButton);
             Grid.SetRow(TestButton, 0);
             Grid.SetColumn(TestButton, 1);
@@ -99,12 +80,7 @@ namespace Bystroschot
             grid.Children.Add(HistoryButton);
             Grid.SetRow(HistoryButton, 1);
             Grid.SetColumn(HistoryButton, 1);
-
-            //grid.Children.Add(AddingButton);
-            //Grid.SetRow(AddingButton, 2);
-            //Grid.SetColumn(AddingButton, 1);
         }
-
         private void HistoryButton_Click(object sender, RoutedEventArgs e)
         {
             MainGridWindow.Children.Clear();
@@ -126,8 +102,6 @@ namespace Bystroschot
             MainGridWindow.Children.Add(grid);
             Grid.SetRow(grid, 1);
 
-            FileInfo xamlHistory = new FileInfo(@"history.txt");
-            string AbsAddres = xamlHistory.FullName;
 
             ListBox ListOfSessions = new ListBox() {HorizontalAlignment=HorizontalAlignment.Stretch,
                 VerticalAlignment=VerticalAlignment.Stretch, FontSize=20,
@@ -140,10 +114,6 @@ namespace Bystroschot
             grid.Children.Add(ListOfSessions);
             Grid.SetRow(ListOfSessions, 0);
             Grid.SetColumn(ListOfSessions, 0);
-
-            //grid.Children.Add(Home);
-            //Grid.SetRow(Home, 1);
-            //Grid.SetColumn(Home, 1);
 
             Button Delete = new Button()
             {
@@ -169,11 +139,9 @@ namespace Bystroschot
                 {
                     users.RemoveAt(ListOfSessions.SelectedIndex);
                     ListOfSessions.Items.RemoveAt(ListOfSessions.SelectedIndex);
-                   //Save();
                 }
             }
         }
-
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             MainGridWindow.Children.Clear();
@@ -250,8 +218,7 @@ namespace Bystroschot
                         };
                         //====================================Для примера
                         TopicBox.Items.Add("Логарифмы");
-                        //TopicBox.Items.Add("Тема 2"); //Maria: я закомитила, чтобы сразу был вид законченный, потом откроем если что
-                        //TopicBox.Items.Add("Тема 3");
+                        
                         //=====================================
                         TopicBox.SelectionChanged += TopicChanged;
                         grid.Children.Add(TopicChoice);
@@ -283,11 +250,11 @@ namespace Bystroschot
                                 FontSize = 40
                             };
                             TestTopicBox.SelectionChanged += TestChanged;
-                            //====================================Для примера
+                            //==================================== примеры
                             TestTopicBox.Items.Add("А");
                             TestTopicBox.Items.Add("Б"); 
                             TestTopicBox.Items.Add("В");
-                            //====================================Для примера
+                            //====================================примеры
                             grid.Children.Add(TestChoice);
                             grid.Children.Add(TestTopicBox);
                             Grid.SetRow(TestChoice, 2);
@@ -320,15 +287,9 @@ namespace Bystroschot
                     }
                 }
             }          
-        }
-
-        string[] test1var, test2var; 
-        string formula_in_math_format_1var, formula_in_Tex_format_1var, formula_in_math_format_2var, formula_in_Tex_format_2var;
-        int idx = 0;
-        
+        }                      
         private void StartTestButton_Click(object sender, RoutedEventArgs e)
-        {
-           
+        {           
             //=========Здесь закидываем экземпляр класса юзер в общий список================
             User user1 = new User();
             user1._name = user._name;
@@ -337,19 +298,19 @@ namespace Bystroschot
             users.Add(user1);
             if(user1._test == "Б")
             {
-                test1var = File.ReadAllLines("Б(1).txt");
-                test2var = File.ReadAllLines("Б(2).txt");
+                test1var = File.ReadAllLines("..\\Debug\\files\\Б(1).txt");
+                test2var = File.ReadAllLines("..\\Debug\\files\\Б(2).txt");
             }
             else if (user1._test == "А")
             {
-                test1var = File.ReadAllLines("А(1).txt");
-                test2var = File.ReadAllLines("А(2).txt");
+                test1var = File.ReadAllLines("..\\Debug\\files\\А(1).txt");
+                test2var = File.ReadAllLines("..\\Debug\\files\\А(2).txt");
                 
             }
             else if (user1._test == "В")
             {
-                test1var = File.ReadAllLines("В(1).txt");
-                test2var = File.ReadAllLines("В(2).txt");
+                test1var = File.ReadAllLines("..\\Debug\\files\\В(1).txt");
+                test2var = File.ReadAllLines("..\\Debug\\files\\В(2).txt");
             }
             int len = test1var.Length;
             idx = 0;
@@ -397,11 +358,9 @@ namespace Bystroschot
             };
            
             Return.Click += GoBack;
-           // Return.IsTabStop = false;
             grid.Children.Add(Return);//0 ребенок
-            Grid.SetRow(Return, 1);          
-            
-            
+            Grid.SetRow(Return, 1);        
+                       
             
             ShowFormula.Click += ShowContent;
             grid.Children.Add(ShowFormula);//1 ребенок
@@ -493,9 +452,7 @@ namespace Bystroschot
         private void GoHome(object sender, RoutedEventArgs e)
         {
             StartWorking();
-        }
-
-        
+        }        
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Вы хотите выйти из приложения?", "Подтверждение выхода", MessageBoxButton.YesNo);
@@ -514,7 +471,6 @@ namespace Bystroschot
                 seralize.Serialize(file, users);
             }
         }
-
         public void Restore()
         {            
             string[] strok = File.ReadAllLines("history.xml");
@@ -528,26 +484,6 @@ namespace Bystroschot
             }                       
         }
     }
-    static class Equation
-    {
-        public static string CreateEquationFirstVariant(string Latex)
-        {
-            const string fileName = @"Equation1Var.PNG";
-            var parser = new TexFormulaParser();
-            var formula = parser.Parse(Latex);
-            var pngByte = formula.RenderToPng(80.0, 0.0, 0.0, "Arial");
-            File.WriteAllBytes(fileName, pngByte);
-            return fileName;
-        }
-        public static string CreateEquationSecondVariant(string Latex)
-        {
-            const string fileName = @"Equation2Var.PNG";
-            var parser = new TexFormulaParser();
-            var formula = parser.Parse(Latex);
-            var pngByte = formula.RenderToPng(80.0, 0.0, 0.0, "Arial");
-            File.WriteAllBytes(fileName, pngByte);
-            return fileName;
-        }
-    }
+    
 
 }
