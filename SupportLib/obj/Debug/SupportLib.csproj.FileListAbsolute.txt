@@ -14,3 +14,12 @@ C:\проекты\PrjctByUs\SupportLib\bin\Debug\Aspose.TeX.xml
 C:\проекты\PrjctByUs\SupportLib\bin\Debug\Mathematics.xml
 C:\проекты\PrjctByUs\SupportLib\bin\Debug\NRTE.xml
 C:\проекты\PrjctByUs\SupportLib\bin\Debug\Physics.xml
+<<<<<<< HEAD
+=======
+C:\проекты\PrjctByUs\SupportLib\obj\Debug\SupportLib.csproj.CopyComplete
+D:\Project\SupportLib\bin\Debug\Aspose.TeX.xml
+D:\Project\SupportLib\bin\Debug\Mathematics.xml
+D:\Project\SupportLib\bin\Debug\NRTE.xml
+D:\Project\SupportLib\bin\Debug\Physics.xml
+D:\Project\SupportLib\obj\Debug\SupportLib.csproj.CopyComplete
+>>>>>>> a7844d5d55461bf78d7f9b2751035c7c7b2a62e2
