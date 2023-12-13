@@ -35,4 +35,24 @@
     <_theme>Логарифмы</_theme>
     <_test>Б</_test>
   </User>
+  <User>
+    <_name>11</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>А</_test>
+  </User>
+  <User>
+    <_name>11</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>А</_test>
+  </User>
+  <User>
+    <_name>22</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>А</_test>
+  </User>
+  <User>
+    <_name>33</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>В</_test>
+  </User>
 </ArrayOfUser>

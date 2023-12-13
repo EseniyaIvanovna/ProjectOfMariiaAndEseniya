@@ -14,4 +14,3 @@ C:\проекты\PrjctByUs\SupportLib\bin\Debug\Aspose.TeX.xml
 C:\проекты\PrjctByUs\SupportLib\bin\Debug\Mathematics.xml
 C:\проекты\PrjctByUs\SupportLib\bin\Debug\NRTE.xml
 C:\проекты\PrjctByUs\SupportLib\bin\Debug\Physics.xml
-C:\проекты\PrjctByUs\SupportLib\obj\Debug\SupportLib.csproj.CopyComplete
