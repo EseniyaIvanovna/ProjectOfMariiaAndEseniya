@@ -35,30 +35,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MainIcon.ico</ApplicationIcon>
+    <ApplicationIcon>MYMainIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Analytics, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\fast\fast\bin\Debug\Analytics.dll</HintPath>
+      <HintPath>bin\Debug\Lib\Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.TeX, Version=23.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\fast\fast\bin\Debug\Aspose.TeX.dll</HintPath>
+      <HintPath>bin\Debug\Lib\Aspose.TeX.dll</HintPath>
     </Reference>
     <Reference Include="Exversion, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\fast\fast\bin\Debug\Exversion.dll</HintPath>
+      <HintPath>bin\Debug\Lib\Exversion.dll</HintPath>
     </Reference>
     <Reference Include="Mathematics, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\fast\fast\bin\Debug\Mathematics.dll</HintPath>
+      <HintPath>bin\Debug\Lib\Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="NRTE">
-      <HintPath>E:\fast\fast\bin\Debug\NRTE.dll</HintPath>
+      <HintPath>bin\Debug\Lib\NRTE.dll</HintPath>
     </Reference>
     <Reference Include="Physics">
-      <HintPath>E:\fast\fast\bin\Debug\Physics.dll</HintPath>
+      <HintPath>bin\Debug\Lib\Physics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -79,7 +79,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WpfMath, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\fast\fast\bin\Debug\WpfMath.dll</HintPath>
+      <HintPath>bin\Debug\Lib\WpfMath.dll</HintPath>
     </Reference>
     <Reference Include="XamlMath.Shared">
       <HintPath>E:\fast\fast\bin\Debug\XamlMath.Shared.dll</HintPath>
@@ -142,10 +142,13 @@
     <Resource Include="Resourses\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MainIcon.ico" />
+    <Resource Include="Resourses\home-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\home-icon.png" />
+    <Resource Include="Resourses\MainIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MYMainIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
