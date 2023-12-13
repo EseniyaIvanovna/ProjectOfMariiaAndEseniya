@@ -12,4 +12,22 @@
     <_theme>Логарифмы</_theme>
     <_test>В</_test>
   </User>
+  <User>
+    <_date>08:12:2023</_date>
+    <_name>1тест</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>Б</_test>
+  </User>
+  <User>
+    <_date>08:12:2023</_date>
+    <_name>11</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>Б</_test>
+  </User>
+  <User>
+    <_date>08:12:2023</_date>
+    <_name>5</_name>
+    <_theme>Логарифмы</_theme>
+    <_test>Б</_test>
+  </User>
 </ArrayOfUser>

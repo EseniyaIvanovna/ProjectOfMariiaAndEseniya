@@ -24,13 +24,7 @@ C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.pdb
 D:\Project\Bystroschot\bin\Debug\Bystroschot.exe.config
 D:\Project\Bystroschot\bin\Debug\Bystroschot.exe
 D:\Project\Bystroschot\bin\Debug\Bystroschot.pdb
-D:\Project\Bystroschot\bin\Debug\Analytics.dll
-D:\Project\Bystroschot\bin\Debug\Aspose.TeX.dll
-D:\Project\Bystroschot\bin\Debug\Exversion.dll
 D:\Project\Bystroschot\bin\Debug\SupportLib.dll
-D:\Project\Bystroschot\bin\Debug\System.Drawing.Common.dll
-D:\Project\Bystroschot\bin\Debug\WpfMath.dll
-D:\Project\Bystroschot\bin\Debug\XamlMath.Shared.dll
 D:\Project\Bystroschot\bin\Debug\SupportLib.pdb
 D:\Project\Bystroschot\bin\Debug\Aspose.TeX.xml
 D:\Project\Bystroschot\bin\Debug\Mathematics.xml

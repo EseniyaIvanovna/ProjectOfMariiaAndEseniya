@@ -431,6 +431,11 @@ namespace Bystroschot
                         ShowFormula.Content = "Завершить тест";
                         ShowFormula.Click += GoHome;
                     }
+                    else
+                    {
+                        ShowFormula.Content = "Показать формулу";
+                        ShowFormula.Click += ShowContent;
+                    }
                 }
                
             }
