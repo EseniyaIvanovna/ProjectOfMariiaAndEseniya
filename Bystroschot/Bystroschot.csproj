@@ -41,29 +41,36 @@
     <Reference Include="Analytics, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Lib\Analytics.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.TeX, Version=23.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Lib\Aspose.TeX.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Exversion, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Lib\Exversion.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Mathematics, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Lib\Mathematics.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NRTE">
       <HintPath>bin\Debug\Lib\NRTE.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Physics">
       <HintPath>bin\Debug\Lib\Physics.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing.Common">
       <HintPath>E:\fast\fast\bin\Debug\System.Drawing.Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,6 +87,7 @@
     <Reference Include="WpfMath, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Lib\WpfMath.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="XamlMath.Shared">
       <HintPath>E:\fast\fast\bin\Debug\XamlMath.Shared.dll</HintPath>
@@ -133,6 +141,7 @@
     <ProjectReference Include="..\SupportLib\SupportLib.csproj">
       <Project>{14308fdb-cf20-4bf6-acac-d3321bfd3b99}</Project>
       <Name>SupportLib</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

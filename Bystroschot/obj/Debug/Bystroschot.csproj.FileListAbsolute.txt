@@ -1,12 +1,6 @@
 C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Bystroschot.exe.config
 C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Bystroschot.exe
 C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Bystroschot.pdb
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\SupportLib.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\SupportLib.pdb
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Aspose.TeX.xml
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Mathematics.xml
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\NRTE.xml
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Physics.xml
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.csproj.AssemblyReference.cache
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\MainWindow.g.cs
 C:\проекты\PrjctByUs\Bystroschot\obj\Debug\App.g.cs
@@ -51,12 +45,3 @@ D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.CoreCompileInputs.cache
 D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.CopyComplete
 D:\Project\Bystroschot\obj\Debug\Bystroschot.exe
 D:\Project\Bystroschot\obj\Debug\Bystroschot.pdb
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Analytics.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Aspose.TeX.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Exversion.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Mathematics.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\NRTE.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\Physics.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\System.Drawing.Common.dll
-C:\проекты\PrjctByUs\Bystroschot\bin\Debug\WpfMath.dll
-C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.csproj.CopyComplete

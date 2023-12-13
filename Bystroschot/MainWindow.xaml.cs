@@ -9,7 +9,6 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using SupportLib;
 using System.Xml.Serialization;
-using WpfMath;
 
 namespace Bystroschot
 {
@@ -466,17 +465,17 @@ namespace Bystroschot
         public void Save()
         {
             XmlSerializer seralize = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
-            using (FileStream file = new FileStream("history.xml", FileMode.OpenOrCreate))
+            using (FileStream file = new FileStream("..\\Debug\\files\\history.xml", FileMode.OpenOrCreate))
             {
                 seralize.Serialize(file, users);
             }
         }
         public void Restore()
         {            
-            string[] strok = File.ReadAllLines("history.xml");
+            string[] strok = File.ReadAllLines("..\\Debug\\files\\history.xml");
             if (strok.Length != 0)
             {
-                using (var file = new FileStream("history.xml", FileMode.OpenOrCreate))
+                using (var file = new FileStream("..\\Debug\\files\\history.xml", FileMode.OpenOrCreate))
                 {
                     var xml = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
                     users = (List<User>)xml.Deserialize(file);
