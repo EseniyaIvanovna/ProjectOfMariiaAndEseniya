@@ -477,7 +477,7 @@ namespace Bystroschot
         }
         public void Restore()
         {            
-<<<<<<< HEAD
+
             string[] strok = File.ReadAllLines("..\\Debug\\files\\history.xml");
             if (strok.Length != 0)
             {
@@ -487,17 +487,7 @@ namespace Bystroschot
                     users = (List<User>)xml.Deserialize(file);
                 }
             }                       
-=======
-            //string[] strok = File.ReadAllLines("history.xml");
-            //if (strok.Length != 0)
-            //{
-            //    using (var file = new FileStream("history.xml", FileMode.OpenOrCreate))
-            //    {
-            //        var xml = new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
-            //        users = (List<User>)xml.Deserialize(file);
-            //    }
-            //}                       
->>>>>>> ac3b4638288a57e35c4c5d31bcc5d672a074ba43
+
         }
     }
     
