@@ -34,3 +34,4 @@ D:\Project\Bystroschot\obj\Debug\Bystroschot.csproj.CopyComplete
 D:\Project\Bystroschot\obj\Debug\Bystroschot.exe
 D:\Project\Bystroschot\obj\Debug\Bystroschot.pdb
 >>>>>>> a7844d5d55461bf78d7f9b2751035c7c7b2a62e2
+C:\проекты\PrjctByUs\Bystroschot\obj\Debug\Bystroschot.csproj.AssemblyReference.cache
